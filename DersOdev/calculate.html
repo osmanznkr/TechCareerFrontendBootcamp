@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        .numbers {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input {
+            width: 150px;
+        }
+
+        .calculates {
+            display: grid;
+            grid-template-columns: auto auto;
+            margin-top: 100px;
+            width: 200px;
+            height: 200px;
+            gap: 20px;
+            max-width: 800px;
+            max-height: 800px;
+        }
+
+        h2 {
+            margin-left: 300px;
+            margin-top: -150px;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="numbers">
+            <label for="num1">Sayı 1</label>
+            <input id="num1" type="number">
+
+            <label for="num2">Sayı 2</label>
+            <input id="num2" type="number">
+        </div>
+
+        <div class="calculates">
+            <button onclick="calculate('topla')" id="topla">Topla</button>
+            <button onclick="calculate('carp')" id="carp">Çarp</button>
+            <button onclick="calculate('cikar')" id="cikar">Çıkar</button>
+            <button onclick="calculate('bol')" id="bol">Böl</button>
+            <button onclick="calculate('kok')" id="kok">Karekök</button>
+        </div>
+
+        <h2 id="answer">CEVAP:</h2>
+    </div>
+
+    <script>
+        function calculate(operation) {
+            var number1 = parseInt(document.getElementById("num1").value);
+            var number2 = parseInt(document.getElementById("num2").value);
+
+            if (operation == "topla") {
+                document.getElementById("answer").innerHTML = "CEVAP: " + (number1 + number2);
+            }
+            else if (operation == "carp") {
+                document.getElementById("answer").innerHTML = "CEVAP: " + (number1 * number2);
+            }
+            else if (operation == "cikar") {
+                document.getElementById("answer").innerHTML = "CEVAP: " + (number1 - number2);
+            }
+            else if (operation == "bol") {
+                if (number2 === 0) {
+                    document.getElementById("answer").innerHTML = "CEVAP: Bir sayıyı 0'a bölemezsiniz.";
+                } else {
+                    document.getElementById("answer").innerHTML = "CEVAP: " + (number1 / number2).toFixed(5);
+                }
+            }
+            else if (operation == "kok") {
+                document.getElementById("answer").innerHTML = "CEVAP: " + Number(Math.sqrt(number1).toFixed(5));
+            }
+        }
+    </script>
+</body>
+
+</html>

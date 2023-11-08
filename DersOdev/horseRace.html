@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        html {
+            background-color: aquamarine;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .images {
+            margin-left: 50px;
+            display: flex;
+            flex-direction: column;
+            margin-top: 30px;
+            padding-top: 100px;
+            gap: 60px;
+        }
+
+        .finish {
+            position: absolute;
+            width: 5px;
+            height: 500px;
+            background-color: red;
+            margin-top: 50px;
+            margin-left: 1000px;
+
+        }
+
+        img {
+            max-width: 150px;
+            max-height: 150px;
+        }
+
+        button {
+            margin-left: 50px;
+            margin-top: 15px;
+            background-color: blue;
+            color: antiquewhite;
+            border-radius: 10px;
+            width: 100px;
+            height: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="startRace()"
+        style="background-color: blue; color: antiquewhite; border-radius: 10px; width: 100px;">START</button>
+
+    <div class="container">
+
+        <div class="images">
+            <img id="horse1" src="https://vetrehberi.com/wp-content/uploads/2021/05/arap-at-irki-ve-ozellikleri.jpg"
+                alt="">
+            <img id="horse2"
+                src="https://iasbh.tmgrup.com.tr/26a1c6/752/395/0/25/710/399?u=https://isbh.tmgrup.com.tr/sbh/2020/06/27/ruyada-at-gormek-nedir-ne-anlama-gelir-ruyada-beyaz-siyah-kahverengi-at-gormek-ruya-tabirleri-1593263179574.jpg"
+                alt="">
+            <img id="horse3" src="https://ares.shiftdelete.net/2018/05/aYBjv5.jpg" alt="">
+        </div>
+
+        <div class="finish">
+
+        </div>
+    </div>
+
+</body>
+
+<script>
+    var raceFinished = true;
+    var horse1 = 0;
+    var horse2 = 0;
+    var horse3 = 0;
+
+    function startRace() {
+
+        raceFinished = false;
+
+
+        setInterval(() => {
+            var h1 = Math.floor(Math.random() * 30);
+            var h2 = Math.floor(Math.random() * 30);
+            var h3 = Math.floor(Math.random() * 30);
+
+            horse1 = horse1 + h1;
+            horse2 = horse2 + h2;
+            horse3 = horse3 + h3;
+
+            document.getElementById("horse1").style.marginLeft = horse1 + "px";
+            document.getElementById("horse2").style.marginLeft = horse2 + "px";
+            document.getElementById("horse3").style.marginLeft = horse3 + "px";
+
+            if (horse1 > 825) {
+                alert('AT-1 kazandı');
+                horse1 = 0;
+                horse2 = 0;
+                horse3 = 0;
+            } else if (horse2 > 825) {
+                alert('AT-2 kazandı');
+                horse1 = 0;
+                horse2 = 0;
+                horse3 = 0;
+            } else if (horse3 > 825) {
+                alert('AT-3 kazandı');
+                horse1 = 0;
+                horse2 = 0;
+                horse3 = 0;
+            }
+        }, 500);
+    }
+
+    console.log
+
+
+</script>
+
+</html>
