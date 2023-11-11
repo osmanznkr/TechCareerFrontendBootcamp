@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+        }
+
+        .number {
+            display: flex;
+            flex-direction: column;
+            max-width: 200px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="number">
+            <label for="">Number: </label>
+            <input id="number" type="number">
+
+            <button onclick="add()" style="margin-top: 20px;">Add</button>
+        </div>
+
+        <ul>
+
+        </ul>
+
+    </div>
+
+    <script>
+
+        var randomNumbers = [];
+
+        function add() {
+
+            var randomNumber = Math.floor(Math.random() * 100);
+            var number = document.getElementById("number").value;
+
+            console.log(randomNumbers)
+
+            if (randomNumbers.includes(number)) {
+                alert('Aynı sayı tekrar eklenemez');
+            }
+            else {
+                randomNumbers.push(number);
+                var li = document.createElement("li");
+                li.innerText = number;
+
+                if (document.querySelector("ul").children.length === 15) {
+                    alert('Daha fazla sayı eklenemez')
+                }
+                else {
+                    document.querySelector("ul").appendChild(li);
+                }
+
+            }
+
+        }
+
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+        }
+
+        .nameSurname {
+            display: flex;
+            flex-direction: column;
+            max-width: 200px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="nameSurname">
+            <label for="">Name: </label>
+            <input id="name" type="text">
+
+            <label for="">Lastname: </label>
+            <input id="surname" type="text">
+
+            <button onclick="add()" style="margin-top: 20px;">Add</button>
+        </div>
+
+        <ul>
+
+        </ul>
+
+    </div>
+
+
+    <script>
+
+        function add() {
+            var name = document.getElementById("name").value
+            var surname = document.getElementById("surname").value
+
+            var li = document.createElement("li")
+            li.innerText = (name + " " + surname).toUpperCase()
+            document.querySelector("ul").appendChild(li);
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
