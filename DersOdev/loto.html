@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+        }
+
+        .numbers {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            border: solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="numbers">
+            <h1 id="number1"></h1>
+        </div>
+        <div class="numbers">
+            <h1 id="number2"></h1>
+        </div>
+        <div class="numbers">
+            <h1 id="number3"></h1>
+        </div>
+        <div class="numbers">
+            <h1 id="number4"></h1>
+        </div>
+        <div class="numbers">
+            <h1 id="number5"></h1>
+        </div>
+        <div class="numbers">
+            <h1 id="number6"></h1>
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: center; margin-top: 50px; ">
+        <button onclick="changeNumber()">Çekiliş</button>
+    </div>
+
+</body>
+
+<script>
+    function changeNumber() {
+        var numbers = []
+
+        for (i = 1; i <= 6; i++) {
+            var randomNumber = Math.floor(Math.random() * 49)
+
+            if (numbers.includes(randomNumber)) {
+                i--
+            }
+            else {
+                document.getElementById("number" + i).innerText = randomNumber
+                numbers.push(randomNumber)
+            }
+
+        }
+    }
+</script>
+
+</html>
