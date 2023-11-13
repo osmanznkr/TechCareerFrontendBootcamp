@@ -18,11 +18,11 @@
     <ul>
 
     </ul>
-    <button onclick="getCategories()">Get Products</button>
+    <button onclick="getProducts()">Get Products</button>
 </body>
 <script>
 
-    function getCategories() {
+    function getProducts() {
         var products = [];
         var productCount = document.querySelector("h1");
         axios.get('https://northwind.vercel.app/api/products')
