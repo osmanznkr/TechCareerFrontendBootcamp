@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.1/axios.min.js"
+        integrity="sha512-m9S8W3a9hhBHPFAbEIaG7J9P92dzcAWwM42VvJp5n1/M599ldK6Z2st2SfJGsX0QR4LfCVr681vyU5vW8d218w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-evenly;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <div>
+                <label for="">Company Name: </label>
+                <input id="companyName" type="text">
+            </div>
+            <div>
+                <label for="">Contact Name: </label>
+                <input id="contactName" type="text">
+            </div>
+            <div>
+                <label for="">Contact Title: </label>
+                <input id="contactTitle" type="text">
+            </div>
+            <button onclick="add()">Add</button>
+
+            <ul>
+
+            </ul>
+        </div>
+
+        <div>
+            <label for="">Customer Id</label>
+            <input id="customerId" type="text">
+            <div class="delete"></div>
+            <button onclick="deleteCustomer()" id="deleteCustomer">Delete</button>
+        </div>
+    </div>
+</body>
+
+<script>
+
+
+
+    function add() {
+
+        var companyName = document.getElementById("companyName").value;
+        var contactName = document.getElementById("contactName").value;
+        var contactTitle = document.getElementById("contactTitle").value;
+
+        var newCompany = {
+            companyName,
+            contactName,
+            contactTitle
+        }
+
+        axios.post('https://northwind.vercel.app/api/customers', newCompany)
+
+        setTimeout(() => {
+            var ulElement = document.querySelector('ul');
+            ulElement.innerHTML = '';
+
+            axios.get('https://northwind.vercel.app/api/customers')
+                .then(res => {
+
+                    res.data.forEach(element => {
+                        var liElement = document.createElement('li')
+
+
+                        liElement.innerText = element.companyName;
+
+                        document.querySelector('ul').appendChild(liElement)
+                    });
+
+                })
+        }, 1000)
+
+
+    }
+
+    function deleteCustomer() {
+
+        var customerId = document.getElementById("customerId").value;
+
+        axios.delete('https://northwind.vercel.app/api/customers/' + customerId)
+
+        setTimeout(() => {
+            var ulElement = document.querySelector('ul');
+            ulElement.innerHTML = '';
+
+            axios.get('https://northwind.vercel.app/api/customers')
+                .then(res => {
+
+                    res.data.forEach(element => {
+                        var liElement = document.createElement('li')
+
+
+                        liElement.innerText = element.companyName;
+
+                        document.querySelector('ul').appendChild(liElement)
+                    });
+
+                })
+        }, 1000)
+
+
+
+
+
+    }
+
+</script>
+
+</html>

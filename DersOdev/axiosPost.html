@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.1/axios.min.js"
+        integrity="sha512-m9S8W3a9hhBHPFAbEIaG7J9P92dzcAWwM42VvJp5n1/M599ldK6Z2st2SfJGsX0QR4LfCVr681vyU5vW8d218w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <div>
+        <label for=""> Name: </label>
+        <input id="name" type="text">
+    </div>
+    <div>
+        <label for=""> Unit Price: </label>
+        <input id="unitPrice" type="text">
+    </div>
+    <div>
+        <label for=""> Stock: </label>
+        <input id="stock" type="text">
+    </div>
+
+    <button onclick="addProduct()" type="">Add</button>
+</body>
+
+<script>
+    function addProduct() {
+
+        var name = document.getElementById("name").value;
+        var unitPrice = document.getElementById("unitPrice").value;
+        var unitsInStock = document.getElementById("stock").value;
+
+        var newProduct = {
+            name,
+            unitPrice,
+            unitsInStock
+        }
+
+        if (stock === "0" && unitPrice === "0") {
+            alert("Stok veya Ücret 0 olamaz");
+        }
+        else if (isNaN(unitPrice) || isNaN(unitsInStock)) {
+            alert("Stok ve Ücret sayı olmak zorundadır")
+        }
+        else {
+            axios.post('https://northwind.vercel.app/api/products', newProduct)
+        }
+
+
+    }
+</script>
+
+</html>
