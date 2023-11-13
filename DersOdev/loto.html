@@ -61,6 +61,9 @@
             if (numbers.includes(randomNumber)) {
                 i--
             }
+            else if (randomNumber == 0) {
+                i--
+            }
             else {
                 document.getElementById("number" + i).innerText = randomNumber
                 numbers.push(randomNumber)
